@@ -1,13 +1,13 @@
 # HPCache 手机缓存模型
 一个简单的线程安全且高吞吐量的模型，用于存储简单数据，支持model存储，无需转换。
 
-###思路
+## 思路
 * 创业一个自定义的`DISPATCH_QUEUE_CONCURRENT`队列。
 * 将`dispatch_sync`（或`dispatch_async`）用于不修改状态的操作。
 * 将`dispatch_barrier_sync`（或`dispatch_barrier_async`）用于可能修改状态的操作。
 注意：这里的属性被标记为`nonatomic`，因为这里有自定义的代码使用了自定义的队列和屏障来管理线程安全。
 
-###代码
+## 代码
 ```javascript
 
 //HPCache.h
